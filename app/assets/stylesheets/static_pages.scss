@@ -1,0 +1,61 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#body{
+  background-color: #F5F7FA;
+}
+.footer {
+  padding: 40px 0;
+  background-color: #434a54;
+}
+.footer-logo, .footer-nav {
+  float: left;
+  width: 20%;
+  padding: 0 20px;
+}
+@media (max-width: 768px) {
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+  .footer-logo, .footer-nav {
+    display: block;
+    float: none;
+    width: 100%;
+  }
+}
+.footer-logo {
+  height: 32px;
+  margin-top: -5px;
+  line-height: 32px;
+}
+.footer-logo img {
+  margin-right: 10px;
+}
+.footer-logo a {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+}
+.footer-logo a:hover, .footer-logo a:active {
+  text-decoration: none;
+}
+.footer-nav .nav-title {
+  margin-bottom: 15px;
+  color: #e6e9ed;
+}
+.footer-nav .nav-item {
+  line-height: 28px;
+}
+.footer-nav .nav-item > a {
+  color: #aab2bd;
+}
+.footer-nav .nav-item > a:hover, .footer-nav .nav-item > a:active {
+  color: #ccd1d9;
+  text-decoration: none;
+}
+.footer-copyright {
+  color: #aab2bd;
+}
