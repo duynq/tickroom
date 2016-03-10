@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  base_title: "Tickroom"
+  static_pages:
+    home: "Home"
