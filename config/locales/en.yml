@@ -20,7 +20,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  dangki: "Đăng ký"
   hello: "Hello world"
   base_title: "Tickroom"
   static_pages:
-    home: "Home"
+    home: "trang chủ"
+  Users:
+    signup: "đăng ký"
