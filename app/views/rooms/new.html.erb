@@ -1,0 +1,15 @@
+<%= provide(:title, "them phong") %>
+<h1>Thong tin cua phong</h1>
+
+<div class="row" >
+    <%= form_for @room  do |f| %>
+      <div>
+        <%= render "form_infor", f: f %>
+      </div>
+      <div >
+        <%= render "form_maps", f: f %>
+      </div>
+      <br/>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+    <% end %>
+</div>
