@@ -11,20 +11,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311181356) do
+ActiveRecord::Schema.define(version: 20160319085819) do
 
-  create_table "users", force: :cascade do |t|
-    t.string   "firstname",       limit: 255
-    t.string   "lastname",        limit: 255
-    t.string   "email",           limit: 255
-    t.date     "birthday"
-    t.string   "gender",          limit: 255
-    t.string   "phoneNumber",     limit: 255
-    t.string   "address",         limit: 255
-    t.integer  "role",            limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "password_digest", limit: 255
+  create_table "rooms", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.float    "price",      limit: 24
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "desc",       limit: 255
+    t.string   "address",    limit: 255
   end
 
+  add_index "rooms", ["user_id"], name: "index_rooms_on_user_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "firstname",           limit: 255
+    t.string   "lastname",            limit: 255
+    t.string   "email",               limit: 255
+    t.date     "birthday"
+    t.string   "gender",              limit: 255
+    t.string   "phoneNumber",         limit: 255
+    t.string   "address",             limit: 255
+    t.integer  "role",                limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "password_digest",     limit: 255
+    t.string   "avatar_file_name",    limit: 255
+    t.string   "avatar_content_type", limit: 255
+    t.integer  "avatar_file_size",    limit: 4
+    t.datetime "avatar_updated_at"
+  end
+
+  add_foreign_key "rooms", "users"
 end

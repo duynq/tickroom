@@ -1,0 +1,14 @@
+<%= render 'shared/error_messages', object: f.object %>
+<div class="row" >
+  <div class="col-md-12" >
+    <div class="col-md-6" >
+      <label class="col-md-offset-4" >Dia chi nha cua ban </label>
+      <p id="address"></p>
+      <%= f.hidden_field :address, id: "room_address" %>
+      <p>Khac hang se tim den nha ban thong qua dia chi nay, hay dien chinh xac dia chi nha ban bang cach dua vi tri danh dau tren ban do</p>
+    </div>
+    <div class="col-md-6" >
+      <div id="googleMap" style="width:500px;height:380px;" ></div>
+    </div>
+  </div>
+</div>
