@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root "static_pages#index"
 
   get  "login" => "sessions#new"
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
 
   resources :static_pages
-  resources :users
   resources :rooms
 
 end

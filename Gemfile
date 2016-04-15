@@ -12,8 +12,7 @@ gem 'sass', '~> 3.4', '>= 3.4.21'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootflat-rails', '~> 0.1.11'
 gem "paperclip"
-gem 's3_direct_upload'
-gem 'aws-sdk'
+gem "devise"
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
