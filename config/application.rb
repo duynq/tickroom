@@ -22,5 +22,14 @@ module Tickroom
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    ActionMailer::Base.smtp_settings = {
+        address: "smtp.gmail.com",
+        port: "587",
+        authentication: :plain,
+        enable_starttls_auto: true,
+        user_name: "quangduyx188@gmail.com",
+        password: "quangduY93",
+        domain: "localhost"
+      }
   end
 end
