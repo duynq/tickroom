@@ -14,6 +14,8 @@ gem "bootflat-rails", "~> 0.1.11"
 gem "paperclip"
 gem "devise"
 gem "cancancan", "~> 1.10"
+gem "omniauth"
+gem "omniauth-facebook"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "bcrypt", "~> 3.1.7"
 
