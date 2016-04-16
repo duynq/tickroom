@@ -4,8 +4,8 @@ class Ability
     user ||= User.new
     if user.admin?
       can :manage, :all
-    else
-      can :read, :all
+    elsif user.normal?
+      can :show, User
     end
   end
 end
