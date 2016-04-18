@@ -15,3 +15,5 @@
 //= require turbolinks
 //= require bootstrap
 //= require room_maps
+//= require chosen-jquery
+//= require conversations

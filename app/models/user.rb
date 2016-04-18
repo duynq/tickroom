@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
   before_create :role_default
   enum role: [:visitors, :normal, :host, :admin]
+  acts_as_messageable
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
@@ -34,6 +35,14 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def mailboxer_name
+    self.name
+  end
+
+  def mailboxer_email object
+    self.email
   end
 
   def email_verified?
