@@ -17,3 +17,7 @@
 //= require room_maps
 //= require chosen-jquery
 //= require conversations
+//= require jquery-fileupload/basic
+//= require photos
+//= require select2
+//= require bxslider

@@ -45,7 +45,8 @@ $(document).ready(function(){
         };
         var addressCicle = new google.maps.Circle(circle);
         addressCicle.bindTo('center', marker, 'position');
-
+        $("#lat").val(marker.getPosition().lat());
+        $("#lng").val(marker.getPosition().lng());
         geocodePosition(marker.getPosition());
         map.setCenter(marker.getPosition());
         google.maps.event.addListener(marker,'dragend', function(){

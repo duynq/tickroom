@@ -16,15 +16,14 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :name
-    devise_parameter_sanitizer.for(:account_update) << :name
-  end
-
   def mailbox
     @mailbox ||= current_user.mailbox
   end
   def conversation
     @conversation ||= mailbox.conversations.find(params[:id])
+  end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:name, :email, :password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :email, :password, :current_password, :avatar) }
   end
 end

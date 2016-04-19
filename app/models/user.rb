@@ -8,7 +8,12 @@ class User < ActiveRecord::Base
   before_create :role_default
   enum role: [:visitors, :normal, :host, :admin]
   acts_as_messageable
-
+  has_many :rooms
+  has_attached_file :avatar, styles: { small: "150x150#", thumb: "100x100#" },
+                  url: "/assets/users/:id/:style/:basename.:extension",
+                  path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"
+  validates_attachment_size :avatar, less_than: 5.megabytes
+  validates_attachment_content_type :avatar, content_type: ['image/jpeg', 'image/png']
   def self.find_for_oauth(auth, signed_in_resource = nil)
     identity = Identity.find_for_oauth(auth)
 

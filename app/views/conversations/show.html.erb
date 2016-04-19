@@ -1,14 +1,14 @@
 <div class="row">
   <div class="spacer"></div>
   <div class="col-md-6">
-    <%= link_to "Compose", new_conversation_path, class: "btn btn-success" %>
+    <%= link_to "Soạn thư", new_conversation_path, class: "btn btn-success" %>
   </div>
   <div class="col-md-6 text-right">
     <% if conversation.is_trashed?(current_user) %>
-        <%= link_to 'Untrash', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
+        <%= link_to 'khôi phục', untrash_conversation_path(conversation), class: 'btn btn-info', method: :post %>
     <% else %>
-        <%= link_to 'Move to trash', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
-                    data: {confirm: 'Are you sure?'} %>
+        <%= link_to 'Xóa', trash_conversation_path(conversation), class: 'btn btn-danger', method: :post,
+                    data: {confirm: 'bạn chắc xóa chứ ?'} %>
     <% end %>
   </div>
 </div>
@@ -32,9 +32,9 @@
         <!-- Reply Form -->
         <%= form_for :message, url: reply_conversation_path(conversation) do |f| %>
             <div class="form-group">
-              <%= f.text_area :body, placeholder: "Reply Message", rows: 4, class: "form-control" %>
+              <%= f.text_area :body, placeholder: "Phản hồi Message", rows: 4, class: "form-control" %>
             </div>
-            <%= f.submit "Reply", class: 'btn btn-danger pull-right' %>
+            <%= f.submit "Phản hồi", class: 'btn btn-danger pull-right' %>
         <% end %>
         <div class="clearfix"></div>
       </div>
