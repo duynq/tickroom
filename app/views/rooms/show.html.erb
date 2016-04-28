@@ -1,0 +1,102 @@
+<div id="room-show">
+  <div class="col-md-3" >
+    <% if @room.user.avatar? %>
+      <%= image_tag @room.user.avatar.url(:thumb), class: "img-circle" %>
+    <% else %>
+      <%= image_tag "user.png", class: "img-circle" %>
+    <% end %>
+    <br/>
+    <div class="user-name" >
+      <%= @room.user.name %><br/>
+      <%= @room.user.email%>
+    </div>
+
+  </div>
+
+  <div class="col-md-9" >
+    <ul id="room-name">
+      <ol><%= @room.name %></ol>
+    </ul>
+    <div class="col-md-3" >
+      <p>Loại phòng: <%= @room.room_type %></p>
+      <p>Loại nhà: <%= @room.home_type %></p>
+      <p>Số khách: <%= @room.number_person %></p>
+    </div>
+    <div class="col-md-4" >
+      <p style="font-weight: bold; font-size: 18px;" >Giá: <%= @room.price %>&nbsp;/Đêm</p>
+    </div>
+  </div>
+  <hr width="100%" size="5px"></hr>
+  <div class="col-md-8" >
+    <h4>Mô tả về phòng</h4>
+    <p><%= @room.description %></p>
+  </div>
+  <hr width="100%" size="5px"></hr>
+  <div class="col-md-12">
+    <h4>Trang thiết bị</h4>
+    <div class="col-md-6 thietbi" >
+      <% if @room.internet? %>
+        <p> <span class="glyphicon glyphicon-ok"></span>&nbsp;Internet </p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Internet</p>
+      <% end %>
+      <% if @room.tv? %>
+        <p> <span class="glyphicon glyphicon-ok"></span>&nbsp;Tivi </p>
+      <% else %>
+        <p> <span class="glyphicon glyphicon-remove"></span>&nbsp;Tivi </p>
+      <% end %>
+      <% if @room.wifi? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Wifi</p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Wifi </p>
+      <% end %>
+      <% if @room.kid? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Trẻ em </p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Trẻ em</p>
+      <% end %>
+    </div>
+    <div class="col-md-6 thietbi" >
+      <% if @room.aircondition? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Điều hòa nhiệt độ</p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Điều hòa nhiệt độ</p>
+      <% end %>
+      <% if @room.elevator? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Thang máy</p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Thang máy</p>
+      <% end %>
+      <% if @room.kitchen? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Bếp</p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Bếp</p>
+      <% end %>
+      <% if @room.computer? %>
+        <p><span class="glyphicon glyphicon-ok"></span>&nbsp;Máy tính</p>
+      <% else %>
+        <p><span class="glyphicon glyphicon-remove"></span>&nbsp;Máy tính</p>
+      <% end %>
+    </div>
+  </div>
+  <hr width="100%" size="5px" ></hr>
+  <div class="col-md-12">
+    <h4>Luật của phòng</h4>
+    <p><%= @room.rule %></p>
+  </div>
+  <hr width="100%" size="5px" ></hr>
+  <div class="col-md-12" >
+    <div class="col-md-6" >
+      <div id="googleMap" style="width:550px;height:380px;" ></div>
+    </div>
+    <div class="col-md-6" >
+      <ul class="imageSlide" >
+        <% @room.photos.each do |photo| %>
+          <% if photo.image? %>
+            <li><%= image_tag photo.image_url, size: "800x400" %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

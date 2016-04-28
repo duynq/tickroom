@@ -2,13 +2,21 @@
 <div class="row" >
   <div class="col-md-12" >
     <div class="col-md-6" >
-      <label class="col-md-offset-4" >Dia chi nha cua ban </label>
+      <label class="col-md-offset-4">Địa chỉ nhà bạn</label>
       <p id="address"></p>
+      <p id="location"></p>
       <%= f.hidden_field :address, id: "room_address" %>
-      <p>Khac hang se tim den nha ban thong qua dia chi nay, hay dien chinh xac dia chi nha ban bang cach dua vi tri danh dau tren ban do</p>
+      <%= f.hidden_field :lat, id: "lat" %>
+      <%= f.hidden_field :lng, id: "lng" %>
+      <div id="googleMap" style="width:550px;height:380px;" ></div>
     </div>
     <div class="col-md-6" >
-      <div id="googleMap" style="width:500px;height:380px;" ></div>
+      <%= f.fields_for :photos do |photo| %>
+        <%= photo.label :image, "Thêm ảnh" %>
+        <%= photo.file_field :image %>
+        <%= photo.check_box :_destroy %>
+        <%= photo.label "Xóa" %><br/>
+      <% end %>
     </div>
   </div>
 </div>
