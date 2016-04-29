@@ -2,6 +2,15 @@ class RoomsController < ApplicationController
   load_and_authorize_resource
   before_action :authenticate_user!
 
+  def index
+    if params[:search]
+      @rooms = Room.search(params[:search]).order("created_at DESC")
+    else
+      @rooms = Room.all.order('created_at DESC')
+    end
+    # binding.pry
+  end
+
   def new
     6.times{ @room.photos.build }
   end

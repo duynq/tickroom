@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20160419033557) do
     t.integer  "room_type",     limit: 4
     t.integer  "number_person", limit: 4
     t.integer  "home_type",     limit: 4
-    t.integer  "province",      limit: 4
+    t.string   "province",      limit: 255
     t.string   "rule",          limit: 255
     t.string   "description",   limit: 255
     t.string   "address",       limit: 255

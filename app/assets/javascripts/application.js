@@ -21,3 +21,4 @@
 //= require photos
 //= require select2
 //= require bxslider
+//= require room

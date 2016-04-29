@@ -8,7 +8,7 @@ class CreateRooms < ActiveRecord::Migration
       t.integer :room_type
       t.integer :number_person
       t.integer :home_type
-      t.integer :province
+      t.string :province
       t.string :rule
       t.string :description
       t.string :address
