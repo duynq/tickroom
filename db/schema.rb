@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160416125631) do
-=======
 ActiveRecord::Schema.define(version: 20160419033557) do
->>>>>>> add avatar user
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -122,15 +118,9 @@ ActiveRecord::Schema.define(version: 20160419033557) do
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
     t.integer  "role",                   limit: 4
-<<<<<<< HEAD
     t.string   "numberPhone",            limit: 255
     t.datetime "birthDay"
     t.integer  "gender",                 limit: 4
-=======
-    t.string   "gender",                 limit: 255
-    t.string   "phoneNumber",            limit: 255
-    t.datetime "birthday"
->>>>>>> add avatar user
     t.string   "address",                limit: 255
     t.string   "hobby",                  limit: 255
     t.string   "reset_password_token",   limit: 255

@@ -1,7 +1,7 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
     <div class="form-group">
       <%= f.label :recipients, "Người nhận" %>
-      <%= f.select(:recipients, User.all.collect {|p| [ p.name, p.id ] }, {}, { class: "chosen-select form-control" })%>
+      <%= f.select(:recipients, User.all.collect {|user| [ user.name, user.id ] }, {}, { class: "form-control chosen-select" })%>
     </div>
     <div class="form-group">
       <%= f.label :subject, "Chủ đề" %>
@@ -9,7 +9,7 @@
     </div>
     <div class="form-group">
       <%= f.label :message, "Tin nhắn" %>
-      <%= f.text_area :body, class: 'form-control', rows: 4  %>
+      <%= f.text_area :body, class: 'form-control',placeholder: "Nội dung", rows: 4  %>
     </div>
     <%= f.submit "Gửi tin", class: "btn btn-success" %>
 <% end %>

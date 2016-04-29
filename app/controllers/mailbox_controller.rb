@@ -1,5 +1,4 @@
 class MailboxController < ApplicationController
-
   before_action :authenticate_user!
 
   def inbox
@@ -16,4 +15,5 @@ class MailboxController < ApplicationController
     @trash = mailbox.trash
     @active = :trash
   end
+
 end

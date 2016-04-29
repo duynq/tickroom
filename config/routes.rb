@@ -6,19 +6,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :rooms, only: :create
   end
-  resources :static_pages
-  resources :rooms, only: [:show, :update, :index, :new] do
-    resources :photos
-  end
-  resources :photos
-  # mailbox folder routes
+
   get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
-  get "mailbox/sent"  => "mailbox#sent",  as: :mailbox_sent
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
   get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
-  resources :users, only: :show
-  resources :static_pages, only: :index
-  resources :rooms, only: [:show, :create, :update, :new]
+  # conversations
   resources :conversations do
     member do
       post :reply
@@ -26,4 +19,14 @@ Rails.application.routes.draw do
       post :untrash
     end
   end
+
+  resources :static_pages
+  resources :rooms, only: [:show, :update, :index, :new] do
+    resources :photos
+  end
+  resources :photos
+
+  resources :users, only: :show
+  resources :static_pages, only: :index
+  resources :rooms, only: [:show, :create, :update, :new]
 end
