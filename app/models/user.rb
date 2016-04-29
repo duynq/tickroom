@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
   TEMP_EMAIL_REGEX = /\Achange@me/
-  #, :lockable, :timeoutable and
+
   devise :database_authenticatable, :confirmable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  acts_as_messageable
+
   validates_format_of :email, without: TEMP_EMAIL_REGEX, on: :update
   before_create :role_default
+
   enum role: [:visitors, :normal, :host, :admin]
-  acts_as_messageable
+
   has_many :rooms
   has_attached_file :avatar, styles: { small: "150x150#", thumb: "100x100#" },
                   url: "/assets/users/:id/:style/:basename.:extension",
@@ -46,7 +49,7 @@ class User < ActiveRecord::Base
     self.name
   end
 
-  def mailboxer_email object
+  def mailboxer_email(object)
     self.email
   end
 
