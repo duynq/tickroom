@@ -21,12 +21,13 @@ Rails.application.routes.draw do
   end
 
   resources :static_pages
-  resources :rooms, only: [:show, :update, :index, :new] do
+  namespace :api do
+    resources :comments
+  end
+  resources :rooms do
     resources :photos
+    resources :comments
   end
   resources :photos
-
-  resources :users, only: :show
-  resources :static_pages, only: :index
-  resources :rooms, only: [:show, :create, :update, :new]
+  resources :favorites
 end

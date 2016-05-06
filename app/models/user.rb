@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
 
   enum role: [:visitors, :normal, :host, :admin]
 
-  has_many :rooms
+  has_many :rooms, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_attached_file :avatar, styles: { small: "150x150#", thumb: "100x100#" },
                   url: "/assets/users/:id/:style/:basename.:extension",
                   path: ":rails_root/public/assets/users/:id/:style/:basename.:extension"

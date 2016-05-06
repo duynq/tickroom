@@ -1,0 +1,10 @@
+<li class="l-att-<%= comment.id%>" >
+  <%= link_to comment.user.name, comment.user %>
+  <span class="date" ><%= time_ago_in_words(comment.created_at) %>ago</span>
+  <p>
+    <%= comment.content %>
+  </p>
+  <% if comment.user_id == current_user.id || comment.room_id == @room.id %>
+    <%= link_to "Xóa", room_comment_path(comment.room, comment), remote: true, method: :delete, class: "delete_comment" %>
+  <% end %>
+</li>

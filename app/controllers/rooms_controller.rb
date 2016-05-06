@@ -1,6 +1,5 @@
 class RoomsController < ApplicationController
   load_and_authorize_resource
-  before_action :authenticate_user!
 
   def index
     if params[:search]
@@ -8,11 +7,26 @@ class RoomsController < ApplicationController
     else
       @rooms = Room.all.order('created_at DESC')
     end
-    # binding.pry
+  end
+
+  def show
+    @comments = Comment.where("room_id = ?", @room.id)
+    respond_to do |format|
+      format.html
+      format.json {render json: @room.as_json(only: [:lat, :lng])}
+    end
   end
 
   def new
-    6.times{ @room.photos.build }
+    6.times{@room.photos.build}
+  end
+
+  def edit
+
+  end
+
+  def update
+
   end
 
   def create

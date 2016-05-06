@@ -26,6 +26,7 @@ gem "carrierwave"
 gem "jquery-fileupload-rails"
 gem 'html5-rails', '~> 0.1.0'
 gem "select2-rails"
+
 group :development, :test do
   gem "pry"
   gem "rspec-rails", "~> 3.0"

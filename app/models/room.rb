@@ -1,6 +1,8 @@
 class Room < ActiveRecord::Base
   belongs_to :user
   has_many :photos, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :photos,
     reject_if: proc { |attributes| attributes[:image].blank? }, allow_destroy: true
 

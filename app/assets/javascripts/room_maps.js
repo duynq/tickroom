@@ -45,12 +45,12 @@ $(document).ready(function(){
         };
         var addressCicle = new google.maps.Circle(circle);
         addressCicle.bindTo('center', marker, 'position');
-        $("#lat").val(marker.getPosition().lat());
-        $("#lng").val(marker.getPosition().lng());
         geocodePosition(marker.getPosition());
         map.setCenter(marker.getPosition());
         google.maps.event.addListener(marker,'dragend', function(){
           geocodePosition(marker.getPosition());
+          $("#lat").val(marker.getPosition().lat());
+          $("#lng").val(marker.getPosition().lng());
         });
       }, function() {
         handleLocationError(true, infoWindow, map.getCenter());

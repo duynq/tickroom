@@ -42,6 +42,27 @@
       font-weight: bold;
     }
   }
+  #room-id {
+    display: none;
+  }
+  #comments-section {
+    display: none;
+    li {
+    list-style-type: none;
+  }
+  }
+  #comment {
+    text-decoration: none;
+    font-size: 30px;
+    font-family: inherit;
+  }
+  .createComment {
+    display: none;
+  }
+  .btn-del {
+    cursor: pointer;
+    color: blue;
+  }
 }
 #search-room {
   width: 375px;

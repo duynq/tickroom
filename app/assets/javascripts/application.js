@@ -21,4 +21,6 @@
 //= require photos
 //= require select2
 //= require bxslider
-//= require room
+//= require map-show
+//= require jquery.uploadPreview.min
+//= comment
