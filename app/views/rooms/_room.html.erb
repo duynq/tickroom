@@ -1,0 +1,14 @@
+<% @rooms.each do |room| %>
+  <div class="col-md-4">
+    <%= link_to room.name, room_path(room.id), method: :get %>
+    <span>Giá: <%= room.price %> đồng</span>
+    <p><%= room.province %></p>
+    <ul class="imageSlide" >
+      <% room.photos.each do |photo| %>
+        <% if photo.image? %>
+           <li><%= image_tag photo.image_url, size: "350x200" %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

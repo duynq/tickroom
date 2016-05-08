@@ -5,11 +5,10 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    recipients = User.where(id: conversation_params[:recipients])
-    conversation = current_user.send_message(recipients, conversation_params[:body], conversation_params[:subject]).conversation
+    recipient = User.where(id: conversation_params[:recipient])
+    conversation = current_user.send_message(recipient, conversation_params[:body], conversation_params[:subject]).conversation
     flash[:success] = "Tin nhắn của bạn được gửi thành công"
     redirect_to conversation_path(conversation)
-    binding.pry
   end
 
   def show
@@ -35,7 +34,7 @@ class ConversationsController < ApplicationController
 
   private
   def conversation_params
-    params.require(:conversation).permit(:subject, :body,:recipients)
+    params.require(:conversation).permit(:subject, :body, :recipient)
   end
 
   def message_params

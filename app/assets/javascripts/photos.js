@@ -8,8 +8,12 @@ $(document).ready(function(){
   $("#province").select2({
     theme: "bootstrap"
   });
+  $("#search-room").select2({
+    theme: "bootstrap"
+  });
   $(".imageSlide").bxSlider({
     mode: 'fade',
     captions: true
   });
+
 });

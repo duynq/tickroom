@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419033557) do
+ActiveRecord::Schema.define(version: 20160507174622) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "room_id",    limit: 4
+    t.string   "content",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "room_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "favorites", ["room_id"], name: "index_favorites_on_room_id", using: :btree
+  add_index "favorites", ["user_id", "room_id"], name: "index_favorites_on_user_id_and_room_id", unique: true, using: :btree
+  add_index "favorites", ["user_id"], name: "index_favorites_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -93,7 +112,7 @@ ActiveRecord::Schema.define(version: 20160419033557) do
     t.integer  "room_type",     limit: 4
     t.integer  "number_person", limit: 4
     t.integer  "home_type",     limit: 4
-    t.integer  "province",      limit: 4
+    t.string   "province",      limit: 255
     t.string   "rule",          limit: 255
     t.string   "description",   limit: 255
     t.string   "address",       limit: 255
@@ -146,6 +165,8 @@ ActiveRecord::Schema.define(version: 20160419033557) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "favorites", "rooms"
+  add_foreign_key "favorites", "users"
   add_foreign_key "identities", "users"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
   add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"

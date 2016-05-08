@@ -1,1 +1,14 @@
-<%= @rooms.name %>
+<div class="row" >
+  <%= form_tag(rooms_path, :method => "get", id: "search-form") do %>
+    <div class="col-md-4" >
+      <%= select_tag :search, options_for_select(Room::PROVINCES),{id: "search-room"} %>
+    </div>
+    <%= submit_tag "search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<% if @rooms.present? %>
+  <%= render "room" %>
+<% else %>
+  <p>There are no rooms containing the term(s) <%= params[:search] %>.</p>
+<% end %>

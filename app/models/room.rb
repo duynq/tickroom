@@ -1,14 +1,16 @@
 class Room < ActiveRecord::Base
   belongs_to :user
   has_many :photos, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   accepts_nested_attributes_for :photos,
     reject_if: proc { |attributes| attributes[:image].blank? }, allow_destroy: true
 
   enum home_type: [:"nhà riêng", :"khách sạn", :"Khu chung cư"]
   enum room_type: [:"phòng riêng", :"phòng chung"]
-  enum province: [:"An Giang", :"Bà Rịa - Vũng Tàu", :"Bạc Liêu", :"Bắc Cạn",
+  PROVINCES = [:"An Giang", :"Bà Rịa - Vũng Tàu", :"Bạc Liêu", :"Bắc Cạn",
     :"Bắc Giang", :"Bắc Ninh", :"Bến tre", :"Bình Dương", :"Bình Định",
-    :"Bính Phước", :"Bình Thuận", :"Cà Mau", :"Cần Thơ",:"Đà Nẵng",
+    :"Bình Phước", :"Bình Thuận", :"Cà Mau", :"Cần Thơ",:"Đà Nẵng",
     :"Đắk Lắk",:"Đắk Nông", :"Đồng Nai", :"Đồng Tháp",
     :"Điện Biên", :"Gia Lai", :"Hà Giang", :"Hà Nam",
     :"Hà Nội", :"Hà Tĩnh", :"Hải Dương", :"Hải Phòng", :"Hòa Bình", :"Hậu Giang",
@@ -18,4 +20,8 @@ class Room < ActiveRecord::Base
     :"Quảng Nam", :"Quảng Ngãi", :"Quảng Ninh", :"Quảng Trị", :"Sóc Trăng", :"Sơn La",
     :"Tây Ninh", :"Thái Bình", :"Thái Nguyên", :"Thanh Hóa", :"Thừa Thiên - Huế",
     :"Tiền Giang", :"Trà Vinh", :"Tuyên Quang", :"Vĩnh Long", :"Vĩnh Phúc", :"Yên Bái"]
+
+  def self.search(search)
+    where("province LIKE ?","%#{search}%")
+  end
 end

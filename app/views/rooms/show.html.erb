@@ -10,7 +10,6 @@
       <%= @room.user.name %><br/>
       <%= @room.user.email%>
     </div>
-
   </div>
 
   <div class="col-md-9" >
@@ -24,6 +23,21 @@
     </div>
     <div class="col-md-4" >
       <p style="font-weight: bold; font-size: 18px;" >Giá: <%= @room.price %>&nbsp;/Đêm</p>
+    </div>
+    <div class="col-md-3" >
+      <%= link_to "Liên Lạc chủ phòng", new_conversation_path(:recipient => @room.user.id), class: "btn btn-primary" %>
+      <div class="space"></div><br/>
+      <% if !Favorite.room_exist(current_user.id, @room.id).present? && @room.user_id != current_user.id %>
+        <%= form_for Favorite.new, remote: true do |f| %>
+          <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "Lưu vào danh sách yêu thích", class: "btn btn-primary" %>
+        <% end %>
+        <div id="saved">Đã Lưu</div>
+      <% elsif @room.user_id == current_user.id %>
+        <div>Đây là phòng của bạn</div>
+      <% else %>
+        <div>Đã Lưu</div>
+      <% end %>
     </div>
   </div>
   <hr width="100%" size="5px"></hr>
@@ -86,8 +100,9 @@
   </div>
   <hr width="100%" size="5px" ></hr>
   <div class="col-md-12" >
+    <p id="room-id"><%= @room.id %></p>
     <div class="col-md-6" >
-      <div id="googleMap" style="width:550px;height:380px;" ></div>
+      <div id="MapShow" style="width:550px;height:380px;" ></div>
     </div>
     <div class="col-md-6" >
       <ul class="imageSlide" >
@@ -99,4 +114,26 @@
       </ul>
     </div>
   </div>
+  <%= link_to "Các bình luận", "#", id: "comment" %>
+  <section id="comments-section">
+    <ol id="comments">
+      <%= render @comments %>
+    </ol>
+    <%= form_for [@room, @room.comments.new], remote: true do |f| %>
+      <fieldset>
+        <ol>
+          <li>
+            <%= f.hidden_field :room_id, value: @room.id %>
+          </li>
+          <li>
+            <%= f.text_area :content, rows: 2, placeholder: "viết bình luận...", class: "form-control" %>
+          </li>
+          <br/>
+          <li>
+            <%= f.submit "Gửi bình luận", class: "btn btn-primary" %>
+          </li>
+        </ol>
+      </fieldset>
+    <% end %>
+  </section>
 </div>

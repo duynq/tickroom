@@ -1,8 +1,7 @@
 <%= form_for :conversation, url: :conversations, html: { class: "" } do |f| %>
-    <div class="form-group">
-      <%= f.label :recipients, "Người nhận" %>
-      <%= f.select(:recipients, User.all.collect {|user| [ user.name, user.id ] }, {}, { class: "form-control chosen-select" })%>
-    </div>
+
+    <%= f.hidden_field :recipient, value: params[:recipient] %>
+
     <div class="form-group">
       <%= f.label :subject, "Chủ đề" %>
       <%= f.text_field :subject, placeholder: "Chủ đề", class: "form-control" %>

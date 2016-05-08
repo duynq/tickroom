@@ -21,3 +21,6 @@
 //= require photos
 //= require select2
 //= require bxslider
+//= require map-show
+//= require jquery.uploadPreview.min
+//= comment
